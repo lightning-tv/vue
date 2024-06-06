@@ -1,0 +1,21 @@
+- Welcome
+  - [Overview](/intro/intro.md)
+  - [Getting started](/intro/getting_started.md)
+  - [Solid / Blits Framework Comparison](/intro/solidvsblits.md)
+- Essentials
+  - [Rendering Hello World](/essentials/render.md)
+  - [Components](/essentials/components.md)
+  - [Images](/essentials/images.md)
+  - [Text](/essentials/text.md)
+  - [Styling](/essentials/styling.md)
+  - [Events](/essentials/events.md)
+  - [Positioning and Layout](/essentials/layout.md)
+  - [Focus / Key Handling](/essentials/focus.md)
+  - [States](/essentials/states.md)
+  - [Transitions (animations)](/essentials/transitions.md)
+- Primitives
+  - [Accessibility / Announcer](/primitives/a11y.md)
+  - [Focus Manager](/primitives/useFocusManager.md)
+  - [Mouse Input](/primitives/useMouse.md)
+  - [Container Padding](/primitives/withPadding.md)
+  - [Portal](/primitives/portal.md)
