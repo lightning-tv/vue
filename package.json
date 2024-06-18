@@ -76,7 +76,6 @@
   "files": [
     "dist",
     "src",
-    "jsx-runtime.d.ts",
     "LICENSE",
     "NOTICE",
     "README.md"

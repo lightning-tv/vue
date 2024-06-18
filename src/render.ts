@@ -13,6 +13,7 @@ export const createApp = async function (
   await renderer.init();
   const rootNode = nodeOps.createElement('App');
   rootNode.lng = renderer.root!;
+  rootNode.rendered = true;
   baseCreateApp(code).mount(rootNode);
   return {
     rootNode,
