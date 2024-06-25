@@ -16,7 +16,13 @@
  */
 import { assertTruthy } from '@lightningjs/renderer/utils';
 import { markRaw } from '@vue/reactivity';
-import { ElementNode, NodeType, type TextNode, log } from '@lightningtv/core';
+import {
+  ElementNode,
+  NodeType,
+  type ElementText,
+  log,
+} from '@lightningtv/core';
+import { CommentNode, comment } from './types.js';
 
 export default {
   createElement(name: string): ElementNode {
@@ -24,15 +30,16 @@ export default {
     markRaw(node);
     return node;
   },
-  createText(text: string): TextNode {
+  createText(text: string): ElementText {
     // A text node is just a string - not the <text> node
-    return { type: NodeType.Text, text, parent: undefined };
+    return { type: NodeType.Text, text, parent: undefined, skipFocus: true };
   },
-  createComment(text: string): undefined {
-    // noop
-    return;
+
+  createComment(text: string): CommentNode {
+    // v-if tags go into here
+    return { type: comment, text, parent: undefined, skipFocus: true };
   },
-  setText(node: TextNode, value: string): void {
+  setText(node: ElementText, value: string): void {
     log('Replace Text: ', node, value);
     node.text = value;
     const parent = node.parent;
@@ -41,13 +48,8 @@ export default {
   },
   setElementText(node: ElementNode, value: string) {
     log('SetElementText: ', node, value);
-    const textNode = {
-      type: NodeType.Text,
-      text: value,
-      parent: undefined,
-    } as TextNode;
-    node.children.insert(textNode);
-    node.text = node.getText();
+    node.text = value;
+    //node.children[0].text = value;
   },
   setProperty(
     node: ElementNode,
@@ -98,7 +100,9 @@ export default {
   parentNode(node: ElementNode): ElementNode | undefined {
     return node.parent;
   },
-  nextSibling(node: ElementNode): ElementNode | TextNode | undefined {
+  nextSibling(
+    node: ElementNode,
+  ): ElementNode | ElementText | CommentNode | undefined {
     const children = node.parent!.children || [];
     const index = children.indexOf(node) + 1;
     if (index < children.length) {
