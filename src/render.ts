@@ -14,8 +14,9 @@ export const createApp = async function (
   const rootNode = nodeOps.createElement('App');
   rootNode.lng = renderer.root!;
   rootNode.rendered = true;
-  baseCreateApp(code).mount(rootNode);
+  const app = baseCreateApp(code);
   return {
+    app,
     rootNode,
     renderer,
   };
