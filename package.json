@@ -42,7 +42,7 @@
   "author": "Chris Lorenzo",
   "license": "Apache-2.0",
   "dependencies": {
-    "@lightningtv/core": "^0.0.13"
+    "@lightningtv/core": "^0.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.5.0",
