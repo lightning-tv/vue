@@ -12,7 +12,7 @@ export const comment = 'comment';
 export interface CommentNode {
   id?: string;
   text: string;
-  type: 'comment';
+  _type: 'comment';
   parent?: ElementNode;
   skipFocus: boolean;
 }

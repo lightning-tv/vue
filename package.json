@@ -42,7 +42,7 @@
   "author": "Chris Lorenzo",
   "license": "Apache-2.0",
   "dependencies": {
-    "@lightningtv/core": "^0.1.4"
+    "@lightningtv/core": "1.0.0-rc1"
   },
   "devDependencies": {
     "@eslint/js": "^9.5.0",
@@ -65,7 +65,7 @@
     "*.{js,cjs,md}": "prettier --write"
   },
   "peerDependencies": {
-    "@lightningjs/renderer": "^0.9.1",
+    "@lightningjs/renderer": "^1.0.0-rc.0",
     "@vue/reactivity": "^3.4.21",
     "@vue/runtime-core": "^3.4.21",
     "@vue/shared": "^3.4.21",

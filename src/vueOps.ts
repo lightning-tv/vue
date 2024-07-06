@@ -32,12 +32,12 @@ export default {
   },
   createText(text: string): ElementText {
     // A text node is just a string - not the <text> node
-    return { type: NodeType.Text, text, parent: undefined, skipFocus: true };
+    return { _type: NodeType.Text, text, parent: undefined, skipFocus: true };
   },
 
   createComment(text: string): CommentNode {
     // v-if tags go into here
-    return { type: comment, text, parent: undefined, skipFocus: true };
+    return { _type: comment, text, parent: undefined, skipFocus: true };
   },
   setText(node: ElementText, value: string): void {
     log('Replace Text: ', node, value);

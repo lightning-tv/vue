@@ -5,12 +5,11 @@ import { extend } from '@vue/shared';
 import { Config, startLightningRenderer } from '@lightningtv/core';
 const patchProp = nodeOps.setProperty;
 
-export const createApp = async function (
+export const createApp = function (
   code: VNode,
   node?: string | HTMLElement | undefined,
 ) {
   const renderer = startLightningRenderer(Config.rendererOptions, node);
-  await renderer.init();
   const rootNode = nodeOps.createElement('App');
   rootNode.lng = renderer.root!;
   rootNode.rendered = true;
