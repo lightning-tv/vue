@@ -1,7 +1,6 @@
-import type { ElementNode } from '@lightningtv/solid';
-import { untrack } from 'solid-js';
+import type { ElementNode } from '@lightningtv/core';
 import SpeechEngine, { type SeriesResult, type SpeechType } from './speech.js';
-import { debounce } from '@solid-primitives/scheduled';
+import debounce from 'debounce';
 import { focusPath } from '../useFocusManager.js';
 
 type DebounceWithFlushFunction<T> = {
@@ -10,7 +9,7 @@ type DebounceWithFlushFunction<T> = {
   clear: VoidFunction;
 };
 
-declare module '@lightningtv/solid' {
+declare module '@lightningtv/vue' {
   /**
    * Augment the existing ElementNode interface with our own
    * Announcer-specific properties.
@@ -28,28 +27,6 @@ let prevFocusPath: ElementNode[] = [];
 let currentlySpeaking: SeriesResult | undefined;
 let voiceOutDisabled = false;
 const fiveMinutes = 300000;
-
-function debounceWithFlush<T>(
-  callback: (newValue: T) => void,
-  time?: number,
-): DebounceWithFlushFunction<T> {
-  const trigger = debounce(callback, time);
-  let scopedValue: T;
-
-  const debounced = (newValue: T) => {
-    scopedValue = newValue;
-    trigger(newValue);
-  };
-
-  debounced.flush = () => {
-    trigger.clear();
-    callback(scopedValue);
-  };
-
-  debounced.clear = trigger.clear;
-
-  return debounced;
-}
 
 function getElmName(elm: ElementNode): string {
   return (elm.id || elm.name) as string;
@@ -131,7 +108,7 @@ export interface Announcer {
     focusDebounce?: number;
     focusChangeTimeout?: number;
   }) => void;
-  onFocusChange?: DebounceWithFlushFunction<ElementNode[]>;
+  onFocusChange?: DebounceWithFlushFunction<ElementNode[] | undefined>;
   refresh: (depth?: number) => void;
 }
 
@@ -170,19 +147,15 @@ export const Announcer: Announcer = {
   },
   refresh: function (depth = 0) {
     Announcer.clearPrevFocus(depth);
-    Announcer.onFocusChange &&
-      Announcer.onFocusChange(untrack(() => focusPath()));
+    Announcer.onFocusChange && Announcer.onFocusChange(focusPath.value!);
   },
   setupTimers: function ({
     focusDebounce = 400,
     focusChangeTimeout = fiveMinutes,
   } = {}) {
-    Announcer.onFocusChange = debounceWithFlush(
-      onFocusChangeCore,
-      focusDebounce,
-    );
+    Announcer.onFocusChange = debounce(onFocusChangeCore, focusDebounce);
 
-    resetFocusPathTimer = debounceWithFlush(() => {
+    resetFocusPathTimer = debounce(() => {
       // Reset focus path for full announce
       prevFocusPath = [];
     }, focusChangeTimeout);

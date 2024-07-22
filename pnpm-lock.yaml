@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@lightningjs/renderer':
-        specifier: ^1.0.0-rc.0
-        version: 1.0.0-rc.0
+        specifier: ^1.0.0
+        version: 1.0.1
       '@lightningtv/core':
-        specifier: 1.0.0-rc1.1
-        version: 1.0.0-rc1.1(@lightningjs/renderer@1.0.0-rc.0)
+        specifier: 1.0.3
+        version: 1.0.3(@lightningjs/renderer@1.0.1)
       '@vue/reactivity':
         specifier: ^3.4.21
         version: 3.4.31
@@ -23,9 +23,18 @@ importers:
       '@vue/shared':
         specifier: ^3.4.21
         version: 3.4.31
+      debounce:
+        specifier: ^2.1.0
+        version: 2.1.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       vue:
         specifier: ^3.4.21
         version: 3.4.31(typescript@5.5.3)
+      vue-debounce:
+        specifier: ^5.0.0
+        version: 5.0.0(vue@3.4.31(typescript@5.5.3))
     devDependencies:
       '@eslint/js':
         specifier: ^9.6.0
@@ -36,6 +45,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.15.0
         version: 7.15.0(eslint@9.6.0)(typescript@5.5.3)
+      '@vue/tsconfig':
+        specifier: ^0.5.1
+        version: 0.5.1
       eslint:
         specifier: ^9.6.0
         version: 9.6.0
@@ -894,8 +906,8 @@ packages:
     resolution: {integrity: sha512-MX+JRi+SFtqIvpmnm177kgsUchXNFAJG43ek1spW4YpxQLbjfU6gqTk+CQnXva4nlTsH8w71ju58snLHQGg/VQ==}
     engines: {node: '>= 20.9.0', npm: '>= 10.0.0', pnpm: '>= 8.9.2'}
 
-  '@lightningjs/renderer@1.0.0-rc.0':
-    resolution: {integrity: sha512-nUKcWpPIy9EXWBvxf6bZG13KanHCTFVWbLEvhKK+5UJYtHS7U/8VBhbQ4cCWWFl5fiHyTJ61i3Ztbm9xSAwaeQ==}
+  '@lightningjs/renderer@1.0.1':
+    resolution: {integrity: sha512-vtA8tBn7xaLVShCwj1ygCsdT1YCIARGcb/i1zIyDX/6Ttj/J+nF5G8xNmUsRApt7fn05LBXoqCeqvc4MZjZmow==}
     engines: {node: '>= 20.9.0', npm: '>= 10.0.0', pnpm: '>= 8.9.2'}
 
   '@lightningjs/threadx@0.3.4':
@@ -904,10 +916,10 @@ packages:
   '@lightningjs/threadx@0.3.5':
     resolution: {integrity: sha512-aUIUfP/d3S0Vg/Ror7CLbqQR6qu5AAdGRnQ5RQuSQz4t9X2p8TomKD7ShRxI1/FnRR7om2MwKIe1Dix/Axdgpg==}
 
-  '@lightningtv/core@1.0.0-rc1.1':
-    resolution: {integrity: sha512-pSY7s2ZGDZgq31wf8Isrps7JKe16YgC1Gc5AjKOEhjwVMXbZI+ulvVXtaNaLRLgUFom+JHvIy+LPTV9WKv/90Q==}
+  '@lightningtv/core@1.0.3':
+    resolution: {integrity: sha512-gFU8vDHGh1im09v4l2Sg15BJ8ti7VfFhWaMPGv3xw+Gn11lWoYvys4uReSfPElmf2YfS7fpPq+3jo/idZWLn6w==}
     peerDependencies:
-      '@lightningjs/renderer': ^1.0.0-rc.0
+      '@lightningjs/renderer': ^1.0.0
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1240,6 +1252,9 @@ packages:
   '@vue/shared@3.4.31':
     resolution: {integrity: sha512-Yp3wtJk//8cO4NItOPpi3QkLExAr/aLBGZMmTtW9WpdwBCJpRM6zj9WgWktXAl8IDIozwNMByT45JP3tO3ACWA==}
 
+  '@vue/tsconfig@0.5.1':
+    resolution: {integrity: sha512-VcZK7MvpjuTPx2w6blwnwZAu5/LgBUtejFOi3pPGQFXQN5Ela03FUtd2Qtg4yWGGissVL0dr6Ro1LfOFh+PCuQ==}
+
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -1433,6 +1448,10 @@ packages:
 
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+
+  debounce@2.1.0:
+    resolution: {integrity: sha512-OkL3+0pPWCqoBc/nhO9u6TIQNTK44fnBnzuVtJAbp13Naxw9R6u21x+8tVTka87AhDZ3htqZ2pSSsZl9fqL2Wg==}
+    engines: {node: '>=18'}
 
   debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -1963,6 +1982,9 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+
   log-update@6.0.0:
     resolution: {integrity: sha512-niTvB4gqvtof056rRIrTZvjNYE4rCUzO6X/X+kYjd7WFxXeJ0NwEFnRxX6ehkvv3jTwrXnNdtAak5XYZuIyPFw==}
     engines: {node: '>=18'}
@@ -2428,6 +2450,11 @@ packages:
 
   validate-html-nesting@1.2.2:
     resolution: {integrity: sha512-hGdgQozCsQJMyfK5urgFcWEqsSSrK63Awe0t/IMR0bZ0QMtnuaiHzThW81guu3qx9abLi99NEuiaN6P9gVYsNg==}
+
+  vue-debounce@5.0.0:
+    resolution: {integrity: sha512-heIPTbmFC6Hghhnwbfjw0nYRBYH+YFp/d9xGQ/rDRPUfU6NBIndbJz+i0pHVii4BXXRi1CaljT6H3fDSbbPMvg==}
+    peerDependencies:
+      vue: '>= 3.0.0'
 
   vue@3.4.25:
     resolution: {integrity: sha512-HWyDqoBHMgav/OKiYA2ZQg+kjfMgLt/T0vg4cbIF7JbXAjDexRf5JRg+PWAfrAkSmTd2I8aPSXtooBFWHB98cg==}
@@ -3344,7 +3371,7 @@ snapshots:
       '@protobufjs/eventemitter': 1.1.0
       memize: 2.1.0
 
-  '@lightningjs/renderer@1.0.0-rc.0':
+  '@lightningjs/renderer@1.0.1':
     dependencies:
       '@lightningjs/threadx': 0.3.5
       '@protobufjs/eventemitter': 1.1.0
@@ -3354,9 +3381,9 @@ snapshots:
 
   '@lightningjs/threadx@0.3.5': {}
 
-  '@lightningtv/core@1.0.0-rc1.1(@lightningjs/renderer@1.0.0-rc.0)':
+  '@lightningtv/core@1.0.3(@lightningjs/renderer@1.0.1)':
     dependencies:
-      '@lightningjs/renderer': 1.0.0-rc.0
+      '@lightningjs/renderer': 1.0.1
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -3754,6 +3781,8 @@ snapshots:
 
   '@vue/shared@3.4.31': {}
 
+  '@vue/tsconfig@0.5.1': {}
+
   acorn-jsx@5.3.2(acorn@8.12.0):
     dependencies:
       acorn: 8.12.0
@@ -3945,6 +3974,8 @@ snapshots:
       which: 2.0.2
 
   csstype@3.1.3: {}
+
+  debounce@2.1.0: {}
 
   debug@4.3.4:
     dependencies:
@@ -4472,6 +4503,8 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
+  lodash@4.17.21: {}
+
   log-update@6.0.0:
     dependencies:
       ansi-escapes: 6.2.1
@@ -4905,6 +4938,10 @@ snapshots:
       punycode: 2.3.1
 
   validate-html-nesting@1.2.2: {}
+
+  vue-debounce@5.0.0(vue@3.4.31(typescript@5.5.3)):
+    dependencies:
+      vue: 3.4.31(typescript@5.5.3)
 
   vue@3.4.25(typescript@5.4.2):
     dependencies:

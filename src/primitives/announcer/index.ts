@@ -1,10 +1,10 @@
-import { createEffect, on } from 'solid-js';
+import { watch } from 'vue';
 import { Announcer } from './announcer.js';
 import { focusPath } from '../useFocusManager.js';
 
 export const useAnnouncer = () => {
   Announcer.setupTimers();
-  createEffect(on(focusPath, Announcer.onFocusChange!, { defer: true }));
+  watch(focusPath, Announcer.onFocusChange!);
 
   return Announcer;
 };

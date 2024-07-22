@@ -1,4 +1,5 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "rootDir": ".",
     "lib": ["ESNext", "DOM", "ES5"],
@@ -22,5 +23,5 @@
     "resolveJsonModule": true,
     "composite": true
   },
-  "include": ["src/*"]
+  "include": ["src/**/*"]
 }

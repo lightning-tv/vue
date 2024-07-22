@@ -1,4 +1,4 @@
-import { ElementNode, ElementText } from '@lightningtv/core';
+import type { ElementNode, ElementText } from '@lightningtv/core';
 
 export type VueNode = ElementNode | ElementText;
 

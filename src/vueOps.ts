@@ -22,7 +22,7 @@ import {
   type ElementText,
   log,
 } from '@lightningtv/core';
-import { CommentNode, comment } from './types.js';
+import { type CommentNode, comment } from './types.js';
 
 export default {
   createElement(name: string): ElementNode {
@@ -54,13 +54,13 @@ export default {
   setProperty(
     node: ElementNode,
     name: string,
-    prevValue: any = true,
-    value: any = true,
+    prevValue: any,
+    value: any,
   ): void {
     node[name] = value;
   },
   insert(
-    node: ElementNode,
+    node: ElementNode | ElementText,
     parent: ElementNode,
     anchor?: ElementNode | null,
   ): void {
