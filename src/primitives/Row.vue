@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { type ElementNode } from '@lightningtv/core';
+import { ElementNode } from '@lightningtv/core';
 import {
   handleNavigation,
   onGridFocus,
@@ -21,11 +21,12 @@ import {
 } from '@lightningtv/solid-ui/utils';
 import { computed } from '@vue/reactivity';
 
-const props = withDefaults(defineProps<ElementNode>(), {
-  scrollIndex: Number,
-  scroll: String,
-  style: Object,
-});
+const props: Partial<ElementNode> & { scrollIndex?: number; scroll?: string } =
+  defineProps({
+    scrollIndex: Number,
+    scroll: String,
+    style: Object,
+  });
 
 const handleLeft = chainFunctions(props.onLeft, handleNavigation('left'));
 const handleRight = chainFunctions(props.onRight, handleNavigation('right'));
