@@ -1,6 +1,6 @@
 {
   "name": "@lightningtv/vue",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Lightning Renderer for VueJS",
   "type": "module",
   "source": "src/index.ts",
