@@ -3,55 +3,51 @@
     :onUp="handleUp"
     :onDown="handleDown"
     :forwardFocus="onGridFocus"
-    :selected="props.selected"
-    :selectedChanged="handleSelectedChanged"
+    :onSelectedChanged="selectedChanged"
+    :onBeforeLayout="setupScroll"
     :style="[style, props.style]"
   >
-    <slot />
+    <slot></slot>
   </node>
 </template>
 
 <script setup lang="ts">
-import { handleNavigation, onGridFocus } from "./utils/handleNavigation";
-import { chainFunctions } from "./utils/chainFunctions";
-import { withScrolling } from "./utils/withScrolling";
+import { ElementNode } from '@lightningtv/core';
+import {
+  handleNavigation,
+  onGridFocus,
+  chainFunctions,
+  withScrolling,
+} from '@lightningtv/solid-ui/utils';
+import { computed } from '@vue/reactivity';
 
-const props = defineProps({
-  selected: {
-    type: Number,
-    default: 0,
-  },
+const props = withDefaults(defineProps<ElementNode>(), {
   scrollIndex: Number,
-  onUp: Function,
-  onDown: Function,
-  onLayout: Function,
-  onSelectedChanged: Function,
   scroll: String,
   style: Object,
 });
 
-const handleUp = chainFunctions(props.onUp, handleNavigation("up"));
-const handleDown = chainFunctions(props.onDown, handleNavigation("down"));
+const handleUp = chainFunctions(props.onUp, handleNavigation('up'));
+const handleDown = chainFunctions(props.onDown, handleNavigation('down'));
+const scroll = computed(() => withScrolling(false, props.y));
 
-const handleLayout = (elm) => {
-  const scrollFn = withScrolling(props.x);
-  scrollFn.call(elm, elm, elm.children[elm.selected], elm.selected, undefined);
-  if (props.onLayout) props.onLayout(elm);
-};
+const selectedChanged = chainFunctions(
+  props.onSelectedChanged,
+  props.scroll !== 'none' ? scroll.value : undefined,
+);
 
-const handleSelectedChanged = (selectedIndex) => {
-  if (props.onSelectedChanged) props.onSelectedChanged(selectedIndex);
-  if (props.scroll !== "none") withScrolling(props.x)(selectedIndex);
-};
+const setupScroll = chainFunctions(props.onBeforeLayout, (elm, selected) =>
+  scroll.value(elm, selected),
+);
 
 const style = {
-  display: "flex",
-  flexBoundary: "fixed",
-  flexDirection: "column",
+  display: 'flex',
+  flexBoundary: 'fixed',
+  flexDirection: 'column',
   gap: 30,
   transition: {
     y: {
-      easing: "ease-in-out",
+      easing: 'ease-in-out',
       duration: 250,
     },
   },

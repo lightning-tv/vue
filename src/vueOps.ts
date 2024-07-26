@@ -66,7 +66,7 @@ export default {
   ): void {
     log('INSERT: ', parent, node, anchor);
 
-    parent.children.insert(node, anchor);
+    parent.insertChild(node, anchor);
     node._queueDelete = false;
 
     if (node instanceof ElementNode) {
@@ -81,7 +81,7 @@ export default {
   },
   remove(node: ElementNode): void {
     log('REMOVE: ', node);
-    node.parent!.children.remove(node);
+    node.parent!.removeChild(node);
     node._queueDelete = true;
 
     if (node instanceof ElementNode) {

@@ -3,8 +3,8 @@
     :onLeft="handleLeft"
     :onRight="handleRight"
     :forwardFocus="onGridFocus"
-    :selected="props.selected"
     :onSelectedChanged="selectedChanged"
+    :onBeforeLayout="setupScroll"
     :style="[style, props.style]"
   >
     <slot></slot>
@@ -12,36 +12,31 @@
 </template>
 
 <script setup lang="ts">
-import { handleNavigation, onGridFocus } from './utils/handleNavigation';
-import { chainFunctions } from './utils/chainFunctions';
-import { withScrolling } from './utils/withScrolling';
+import { type ElementNode } from '@lightningtv/core';
+import {
+  handleNavigation,
+  onGridFocus,
+  chainFunctions,
+  withScrolling,
+} from '@lightningtv/solid-ui/utils';
+import { computed } from '@vue/reactivity';
 
-const props = defineProps({
-  selected: {
-    type: Number,
-    default: null,
-  },
+const props = withDefaults(defineProps<ElementNode>(), {
   scrollIndex: Number,
-  onLeft: Function,
-  onRight: Function,
-  onLayout: Function,
-  onSelectedChanged: Function,
   scroll: String,
   style: Object,
 });
 
 const handleLeft = chainFunctions(props.onLeft, handleNavigation('left'));
 const handleRight = chainFunctions(props.onRight, handleNavigation('right'));
+const scroll = computed(() => withScrolling(true, props.x));
 const selectedChanged = chainFunctions(
   props.onSelectedChanged,
-  props.scroll !== 'none' ? withScrolling(props.x) : undefined,
+  props.scroll !== 'none' ? scroll.value : undefined,
 );
-
-const handleLayout = (elm) => {
-  const scrollFn = withScrolling(props.x);
-  scrollFn.call(elm, elm, elm.children[elm.selected], elm.selected, undefined);
-  if (props.onLayout) props.onLayout(elm);
-};
+const setupScroll = chainFunctions(props.onBeforeLayout, (elm, selected) =>
+  scroll.value(elm, selected),
+);
 
 const style = {
   display: 'flex',
