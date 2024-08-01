@@ -22,15 +22,11 @@ import {
 import { computed } from '@vue/reactivity';
 
 const props: Partial<ElementNode> & { scrollIndex?: number; scroll?: string } =
-  defineProps({
-    scrollIndex: Number,
-    scroll: String,
-    style: Object,
-  });
+  defineProps();
 
 const handleUp = chainFunctions(props.onUp, handleNavigation('up'));
 const handleDown = chainFunctions(props.onDown, handleNavigation('down'));
-const scroll = computed(() => withScrolling(false, props.y));
+const scroll = computed(() => withScrolling(false, props.y || props.style?.y));
 
 const selectedChanged = chainFunctions(
   props.onSelectedChanged,

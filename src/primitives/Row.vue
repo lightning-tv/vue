@@ -30,7 +30,7 @@ const props: Partial<ElementNode> & { scrollIndex?: number; scroll?: string } =
 
 const handleLeft = chainFunctions(props.onLeft, handleNavigation('left'));
 const handleRight = chainFunctions(props.onRight, handleNavigation('right'));
-const scroll = computed(() => withScrolling(true, props.x));
+const scroll = computed(() => withScrolling(true, props.x || props.style?.x));
 const selectedChanged = chainFunctions(
   props.onSelectedChanged,
   props.scroll !== 'none' ? scroll.value : undefined,
