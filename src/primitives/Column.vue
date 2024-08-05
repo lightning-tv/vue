@@ -5,7 +5,7 @@
     :forwardFocus="onGridFocus"
     :onSelectedChanged="selectedChanged"
     :onBeforeLayout="setupScroll"
-    :style="[style, props.style]"
+    :style="[style, attrs.style]"
   >
     <slot></slot>
   </node>
