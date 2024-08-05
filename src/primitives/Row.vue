@@ -5,7 +5,7 @@
     :forwardFocus="onGridFocus"
     :onSelectedChanged="selectedChanged"
     :onBeforeLayout="setupScroll"
-    :style="[style, props.style]"
+    :style="[style, attrs.style]"
   >
     <slot></slot>
   </node>
@@ -20,22 +20,17 @@ import {
   withScrolling,
 } from '@lightningtv/solid-ui/utils';
 import { computed } from '@vue/reactivity';
+import { useAttrs } from 'vue';
 
-const props: Partial<ElementNode> & { scrollIndex?: number; scroll?: string } =
-  defineProps({
-    scrollIndex: Number,
-    scroll: String,
-    style: Object,
-  });
-
-const handleLeft = chainFunctions(props.onLeft, handleNavigation('left'));
-const handleRight = chainFunctions(props.onRight, handleNavigation('right'));
-const scroll = computed(() => withScrolling(true, props.x || props.style?.x));
+const attrs: Partial<ElementNode> & { scroll?: string } = useAttrs();
+const handleLeft = chainFunctions(attrs.onLeft, handleNavigation('left'));
+const handleRight = chainFunctions(attrs.onRight, handleNavigation('right'));
+const scroll = computed(() => withScrolling(true, attrs.x || attrs.style?.x));
 const selectedChanged = chainFunctions(
-  props.onSelectedChanged,
-  props.scroll !== 'none' ? scroll.value : undefined,
+  attrs.onSelectedChanged,
+  attrs.scroll !== 'none' ? scroll.value : undefined,
 );
-const setupScroll = chainFunctions(props.onBeforeLayout, (elm, selected) =>
+const setupScroll = chainFunctions(attrs.onBeforeLayout, (elm, selected) =>
   scroll.value(elm, selected),
 );
 

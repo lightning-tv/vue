@@ -20,20 +20,20 @@ import {
   withScrolling,
 } from '@lightningtv/solid-ui/utils';
 import { computed } from '@vue/reactivity';
+import { useAttrs } from 'vue';
 
-const props: Partial<ElementNode> & { scrollIndex?: number; scroll?: string } =
-  defineProps();
+const attrs: Partial<ElementNode> = useAttrs();
 
-const handleUp = chainFunctions(props.onUp, handleNavigation('up'));
-const handleDown = chainFunctions(props.onDown, handleNavigation('down'));
-const scroll = computed(() => withScrolling(false, props.y || props.style?.y));
+const handleUp = chainFunctions(attrs.onUp, handleNavigation('up'));
+const handleDown = chainFunctions(attrs.onDown, handleNavigation('down'));
+const scroll = computed(() => withScrolling(false, attrs.y || attrs.style?.y));
 
 const selectedChanged = chainFunctions(
-  props.onSelectedChanged,
-  props.scroll !== 'none' ? scroll.value : undefined,
+  attrs.onSelectedChanged,
+  attrs.scroll !== 'none' ? scroll.value : undefined,
 );
 
-const setupScroll = chainFunctions(props.onBeforeLayout, (elm, selected) =>
+const setupScroll = chainFunctions(attrs.onBeforeLayout, (elm, selected) =>
   scroll.value(elm, selected),
 );
 

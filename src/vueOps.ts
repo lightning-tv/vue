@@ -24,9 +24,41 @@ import {
 } from '@lightningtv/core';
 import { type CommentNode, comment } from './types.js';
 
+declare module '@lightningtv/core' {
+  interface ElementNode {
+    _rawNodes: (ElementNode | ElementText)[];
+  }
+}
+
+function insertChild(
+  parent: ElementNode,
+  node: ElementNode | ElementText,
+  beforeNode?: ElementNode | ElementText | null,
+) {
+  if (beforeNode) {
+    // SolidJS can move nodes around in the children array.
+    // We need to insert following DOM insertBefore which moves elements.
+    removeChild(parent, node);
+    const index = parent._rawNodes.indexOf(beforeNode);
+    parent._rawNodes.splice(index, 0, node);
+  } else {
+    parent._rawNodes.push(node);
+  }
+
+  node.parent = parent;
+}
+
+function removeChild(parent: ElementNode, node: ElementNode | ElementText) {
+  const nodeIndexToRemove = parent._rawNodes.indexOf(node);
+  if (nodeIndexToRemove >= 0) {
+    parent._rawNodes.splice(nodeIndexToRemove, 1);
+  }
+}
+
 export default {
   createElement(name: string): ElementNode {
     const node = new ElementNode(name);
+    node._rawNodes = [];
     markRaw(node);
     return node;
   },
@@ -65,13 +97,14 @@ export default {
     anchor?: ElementNode | null,
   ): void {
     log('INSERT: ', parent, node, anchor);
-
-    parent.insertChild(node, anchor);
     node._queueDelete = false;
+    insertChild(parent, node, anchor);
 
     if (node instanceof ElementNode) {
+      parent.insertChild(node, anchor);
       parent.rendered && node.render();
     } else if (parent.isTextNode()) {
+      parent.insertChild(node, anchor);
       // TextNodes can be placed outside of <text> nodes when <Show> is used as placeholder
       parent.text = parent.getText();
     }
@@ -81,10 +114,12 @@ export default {
   },
   remove(node: ElementNode): void {
     log('REMOVE: ', node);
-    node.parent!.removeChild(node);
+    removeChild(node.parent!, node);
     node._queueDelete = true;
 
     if (node instanceof ElementNode) {
+      node.parent!.removeChild(node);
+
       // Solid replacesNodes to move them (via insert and remove),
       // so we need to wait for the next microtask to destroy the node
       // in the event it gets a new parent.
@@ -103,7 +138,7 @@ export default {
   nextSibling(
     node: ElementNode,
   ): ElementNode | ElementText | CommentNode | undefined {
-    const children = node.parent!.children || [];
+    const children = node.parent!._rawNodes || [];
     const index = children.indexOf(node) + 1;
     if (index < children.length) {
       return children[index];

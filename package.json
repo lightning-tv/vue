@@ -16,7 +16,9 @@
       "import": "./src/primitives/index.ts"
     },
     "./row": "./src/primitives/Row.vue",
-    "./column": "./src/primitives/Column.vue"
+    "./Row.vue": "./src/primitives/Row.vue",
+    "./column": "./src/primitives/Column.vue",
+    "./Column.vue": "./src/primitives/Column.vue"
   },
   "sideEffects": false,
   "scripts": {
@@ -44,7 +46,7 @@
   "author": "Chris Lorenzo",
   "license": "Apache-2.0",
   "dependencies": {
-    "@lightningtv/core": "1.4.0",
+    "@lightningtv/core": "1.4.1",
     "@lightningtv/solid-ui": "^0.21.3",
     "debounce": "^2.1.0",
     "lodash": "^4.17.21",
