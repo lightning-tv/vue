@@ -4,7 +4,7 @@ There are two building blocks provided by Solid Lightning: **View** & **Text**
 
 ## Creating a Counter Component
 
-The following code demonstrates how to create a simple Counter component using SolidJS and Lightning TV. This component displays a text element with custom styles.
+The following code demonstrates how to create a simple Counter component using VueJS and Lightning TV. This component displays a text element with custom styles.
 
 ### Imports and Typescript
 
@@ -27,7 +27,7 @@ interface CounterProps extends NodeProps {
 
 ### Counter Component
 
-The `Counter` component is defined as a SolidJS component that accepts `CounterProps`:
+The `Counter` component is defined as a VueJS component that accepts `CounterProps`:
 
 ```jsx
 import { type Component } from 'solid-js';
@@ -71,7 +71,7 @@ function App() {
 }
 ```
 
-To learn more about creating components read the [SolidJS documentation](https://docs.solidjs.com/guides/foundations/understanding-components). You'll do the same authoring of components that you learn from the Solid docs. For example, lets use a signal to pass into Counter.
+To learn more about creating components read the [VueJS documentation](https://docs.vuejs.org/guides/foundations/understanding-components). You'll do the same authoring of components that you learn from the Solid docs. For example, lets use a signal to pass into Counter.
 
 ```jsx
 import { createSignal } from 'solid-js';
@@ -86,7 +86,7 @@ function App() {
 
 ## use: (Directives) in Solid
 
-SolidJS has built in [Directives](https://www.solidjs.com/docs/latest/api#use___) support via `use:` property. These only work on root elements `node` and `text`. Meaning you can't use `View` or `Text`. Here's how to use the `withPadding` directive
+VueJS has built in [Directives](https://www.vuejs.org/docs/latest/api#use___) support via `use:` property. These only work on root elements `node` and `text`. Meaning you can't use `View` or `Text`. Here's how to use the `withPadding` directive
 
 ```jsx
 import { withPadding } from '@lightningtv/solid';

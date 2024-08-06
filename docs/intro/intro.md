@@ -1,10 +1,10 @@
 <p>
-  <img src="https://assets.solidjs.com/banner?project=Library&type=solid-lightning" alt="SolidJS Lightning" />
+  <img src="https://assets.vuejs.org/banner?project=Library&type=solid-lightning" alt="VueJS Lightning" />
 </p>
 
-# SolidJS for Lightning 3
+# VueJS for Lightning 3
 
-Solid-Lightning is a UI framework for the [Lightning 3 Renderer](https://github.com/lightning-js/renderer) built with [SolidJS](https://www.solidjs.com/) [Universal Renderer](https://github.com/solidjs/solid/releases/tag/v1.2.0). It allows you to declaratively construct lightning nodes with reactive primitives, just as you would construct a DOM tree in SolidJS.
+Vue-Lightning is a UI framework for the [Lightning 3 Renderer](https://github.com/lightning-js/renderer) built with [VueJS](https://www.vuejs.org/) [Universal Renderer](https://vuejs.org/v2/guide/). It allows you to declaratively construct lightning nodes with reactive primitives, just as you would construct a DOM tree in VueJS.
 
 ## Why Solid
 
@@ -12,9 +12,9 @@ Solid-Lightning is a UI framework for the [Lightning 3 Renderer](https://github.
 - Established - Solid is widely used in production since 2018 with large community
   - [Router](https://github.com/solidjs/solid-router)
   - [Primitive Libraries](https://github.com/solidjs-community/solid-primitives)
-  - [Tons of documentations](https://docs.solidjs.com/)
+  - [Tons of documentations](https://docs.vuejs.org/)
   - [Demo App](https://lightning-tv.github.io/solid-demo-app/#/)
-  - [Playground](https://playground.solidjs.com/)
+  - [Playground](https://playground.vuejs.org/)
 - Familiar and easy to use JSX + React like syntax
 - Typescript
 - [Lightning UI Library](https://github.com/lightning-js/ui-components) of components with Theming

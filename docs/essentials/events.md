@@ -1,10 +1,10 @@
 ## Component Lifecycle (onMount, onCleanup)
 
-SolidJS offers two primary lifecycle hooks to manage component behavior:
+VueJS offers two primary lifecycle hooks to manage component behavior:
 
--[onMount](https://www.solidjs.com/docs/latest/api#onmount): Executes a function when the component is first inserted. -[onCleanup](https://www.solidjs.com/docs/latest/api#oncleanup): Executes a function to clean up resources when the component is removed.
+-[onMount](https://www.vuejs.org/docs/latest/api#onmount): Executes a function when the component is first inserted. -[onCleanup](https://www.vuejs.org/docs/latest/api#oncleanup): Executes a function to clean up resources when the component is removed.
 
-For detailed information, refer to the [SolidJS Lifecycle documentation](https://docs.solidjs.com/references/api-reference/lifecycles/onMount)
+For detailed information, refer to the [VueJS Lifecycle documentation](https://docs.vuejs.org/references/api-reference/lifecycles/onMount)
 
 ## Built in Events
 
@@ -18,7 +18,7 @@ Learn more about the [layout events](/layout.md)
 
 ## Renderer Events
 
-In addition to the Lifecycle events from SolidJS, the Lightning Renderer offers additional events for you to tie into using `onEvents` array:
+In addition to the Lifecycle events from VueJS, the Lightning Renderer offers additional events for you to tie into using `onEvents` array:
 
 ```jsx
 <View onEvents={[

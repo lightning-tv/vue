@@ -1,4 +1,4 @@
-# SolidJS Lightning 3
+# VueJS Lightning 3
 
 ## Installation
 

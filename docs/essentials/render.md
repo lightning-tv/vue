@@ -1,6 +1,6 @@
-## Introduction to Rendering in SolidJS with Lightning TV
+## Introduction to Rendering in VueJS with Lightning TV
 
-In this snippet, we are utilizing SolidJS in conjunction with Lightning TV to render a simple "Hello World" text on the screen. SolidJS is a declarative JavaScript library for creating user interfaces, renowned for its performance and fine-grained reactivity. Lightning TV is a framework for building high-performance, animated TV applications. By combining these technologies, we can create dynamic and visually appealing interfaces optimized for TV environments.
+In this snippet, we are utilizing VueJS in conjunction with Lightning TV to render a simple "Hello World" text on the screen. VueJS is a declarative JavaScript library for creating user interfaces, renowned for its performance and fine-grained reactivity. Lightning TV is a framework for building high-performance, animated TV applications. By combining these technologies, we can create dynamic and visually appealing interfaces optimized for TV environments.
 
 ```jsx
 import { render, Text } from '@lightningtv/solid';
@@ -8,20 +8,20 @@ import { render, Text } from '@lightningtv/solid';
 render(() => <Text>Hello World</Text>);
 ```
 
-## Understanding the Integration of SolidJS and Lightning TV
+## Understanding the Integration of VueJS and Lightning TV
 
-It's very important to understand the concepts of SolidJS as that is the primary library for building the UI. SolidJS provides the foundation for creating reactive and efficient user interfaces, while the Lightning TV integration merely links SolidJS with the Lightning Renderer to create Canvas drawing. This combination allows for the creation of high-performance TV applications with smooth animations and responsive designs.
+It's very important to understand the concepts of VueJS as that is the primary library for building the UI. VueJS provides the foundation for creating reactive and efficient user interfaces, while the Lightning TV integration merely links VueJS with the Lightning Renderer to create Canvas drawing. This combination allows for the creation of high-performance TV applications with smooth animations and responsive designs.
 
-### Key Concepts in SolidJS
+### Key Concepts in VueJS
 
-To effectively use this integration, familiarize yourself with the core concepts of SolidJS:
+To effectively use this integration, familiarize yourself with the core concepts of VueJS:
 
-- **Reactivity**: SolidJS uses fine-grained reactivity to update the DOM. This means that only the parts of the DOM that need to change are updated, resulting in highly efficient rendering.
-- **Components**: Components are the building blocks of a SolidJS application. They are functions that return JSX and can manage their own state and lifecycle.
-- **JSX**: SolidJS uses JSX, a syntax extension for JavaScript that allows you to write HTML-like code within JavaScript. This makes it easy to define UI components declaratively.
-- **State Management**: SolidJS provides reactive primitives such as signals, stores, and context to manage state within your application.
+- **Reactivity**: VueJS uses fine-grained reactivity to update the DOM. This means that only the parts of the DOM that need to change are updated, resulting in highly efficient rendering.
+- **Components**: Components are the building blocks of a VueJS application. They are functions that return JSX and can manage their own state and lifecycle.
+- **JSX**: VueJS uses JSX, a syntax extension for JavaScript that allows you to write HTML-like code within JavaScript. This makes it easy to define UI components declaratively.
+- **State Management**: VueJS provides reactive primitives such as signals, stores, and context to manage state within your application.
 
-You can learn more about SolidJS from their [documentation](https://docs.solidjs.com/).
+You can learn more about VueJS from their [documentation](https://docs.vuejs.org/).
 
 ## Configuring the Renderer
 

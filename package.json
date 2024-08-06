@@ -1,6 +1,6 @@
 {
   "name": "@lightningtv/vue",
-  "version": "0.4.0",
+  "version": "1.0.0-rc",
   "description": "Lightning Renderer for VueJS",
   "type": "module",
   "source": "src/index.ts",
@@ -47,7 +47,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lightningtv/core": "1.4.1",
-    "@lightningtv/solid-ui": "^0.21.3",
+    "@lightningtv/solid-ui": "^0.22.0",
     "debounce": "^2.1.0",
     "lodash": "^4.17.21",
     "vue-debounce": "^5.0.0"

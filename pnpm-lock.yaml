@@ -15,8 +15,8 @@ importers:
         specifier: 1.4.1
         version: 1.4.1(@lightningjs/renderer@1.0.1)
       '@lightningtv/solid-ui':
-        specifier: ^0.21.3
-        version: 0.21.3(@lightningtv/core@1.4.1(@lightningjs/renderer@1.0.1))(@lightningtv/solid@1.4.10(@lightningjs/renderer@1.0.1)(solid-js@1.8.19))(solid-js@1.8.19)
+        specifier: ^0.22.0
+        version: 0.22.0(@lightningtv/core@1.4.1(@lightningjs/renderer@1.0.1))(@lightningtv/solid@1.4.10(@lightningjs/renderer@1.0.1)(solid-js@1.8.19))(solid-js@1.8.19)
       '@vue/reactivity':
         specifier: ^3.4.21
         version: 3.4.34
@@ -927,11 +927,11 @@ packages:
     peerDependencies:
       '@lightningjs/renderer': ^1.0.0
 
-  '@lightningtv/solid-ui@0.21.3':
-    resolution: {integrity: sha512-gS5EYA1r67S59Xrg0IqlAOafSOI8c1eAzZm1n8YT2HFdc5xkHEhQW0ZVVrhIMt70YHQ0ZfFFCU4Keyq5EMg/Ug==}
+  '@lightningtv/solid-ui@0.22.0':
+    resolution: {integrity: sha512-z+V7uIDeRVhZ5V5kNu+N5sp2kA3qtvmoDdUT6bC5uYHrYo8XrNEN3NmvIsghrylAb4fH5cP4OxlHMlKLsfFVvQ==}
     peerDependencies:
-      '@lightningtv/core': ^1.3.9
-      '@lightningtv/solid': ^1.4.9
+      '@lightningtv/core': ^1.4.1
+      '@lightningtv/solid': ^1.5.0
       solid-js: '*'
 
   '@lightningtv/solid@1.4.10':
@@ -3498,7 +3498,7 @@ snapshots:
     dependencies:
       '@lightningjs/renderer': 1.0.1
 
-  '@lightningtv/solid-ui@0.21.3(@lightningtv/core@1.4.1(@lightningjs/renderer@1.0.1))(@lightningtv/solid@1.4.10(@lightningjs/renderer@1.0.1)(solid-js@1.8.19))(solid-js@1.8.19)':
+  '@lightningtv/solid-ui@0.22.0(@lightningtv/core@1.4.1(@lightningjs/renderer@1.0.1))(@lightningtv/solid@1.4.10(@lightningjs/renderer@1.0.1)(solid-js@1.8.19))(solid-js@1.8.19)':
     dependencies:
       '@lightningtv/core': 1.4.1(@lightningjs/renderer@1.0.1)
       '@lightningtv/solid': 1.4.10(@lightningjs/renderer@1.0.1)(solid-js@1.8.19)

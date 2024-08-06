@@ -1,6 +1,7 @@
 - Welcome
   - [Overview](/intro/intro.md)
   - [Getting started](/intro/getting_started.md)
+  - [Device Support](/intro/device_support.md)
   - [Solid / Blits Framework Comparison](/intro/solidvsblits.md)
 - Essentials
   - [Rendering Hello World](/essentials/render.md)
@@ -9,13 +10,17 @@
   - [Text](/essentials/text.md)
   - [Styling](/essentials/styling.md)
   - [Events](/essentials/events.md)
-  - [Positioning and Layout](/essentials/layout.md)
   - [Focus / Key Handling](/essentials/focus.md)
   - [States](/essentials/states.md)
   - [Transitions (animations)](/essentials/transitions.md)
+  - [Screen Resolution](/essentials/screen_resolution.md)
+- Control Flow
+  - [Positioning and Layout](/flow/layout.md)
+  - [Show / Hidding Elements](/flow/show_hide.md)
 - Primitives
   - [Accessibility / Announcer](/primitives/a11y.md)
   - [Focus Manager](/primitives/useFocusManager.md)
+  - [LazyUp](/primitives/lazyUp.md)
   - [Mouse Input](/primitives/useMouse.md)
   - [Container Padding](/primitives/withPadding.md)
   - [Portal](/primitives/portal.md)
