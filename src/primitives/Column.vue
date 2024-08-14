@@ -1,41 +1,56 @@
 <template>
   <node
+    v-bind="props"
     :onUp="handleUp"
     :onDown="handleDown"
     :forwardFocus="onGridFocus"
     :onSelectedChanged="selectedChanged"
     :onBeforeLayout="setupScroll"
-    :style="[style, attrs.style]"
+    :style="[style, props.style]"
   >
     <slot></slot>
   </node>
 </template>
 
 <script setup lang="ts">
-import { ElementNode } from '@lightningtv/core';
+import { ElementNode, type KeyHandler, type Styles } from '@lightningtv/core';
 import {
   handleNavigation,
   onGridFocus,
   chainFunctions,
   withScrolling,
 } from '@lightningtv/solid-ui/utils';
-import { computed } from '@vue/reactivity';
-import { useAttrs } from 'vue';
 
-const attrs: Partial<ElementNode> = useAttrs();
+const props = defineProps<{
+  scrollIndex?: number;
+  selected?: number;
+  scroll?: string;
+  onBeforeLayout?: (elm: ElementNode, selected: ElementNode) => void;
+  onUp?: KeyHandler;
+  onDown?: KeyHandler;
+  onSelectedChanged?: (
+    container: ElementNode,
+    activeElm: ElementNode,
+    selectedIndex: number,
+    lastSelectedIndex: number | undefined,
+  ) => void;
+  style?: Styles;
+}>();
 
-const handleUp = chainFunctions(attrs.onUp, handleNavigation('up'));
-const handleDown = chainFunctions(attrs.onDown, handleNavigation('down'));
-const scroll = computed(() => withScrolling(false, attrs.y || attrs.style?.y));
+const handleUp = chainFunctions(props.onUp, handleNavigation('up'));
+const handleDown = chainFunctions(props.onDown, handleNavigation('down'));
+const scroll = withScrolling(false);
 
 const selectedChanged = chainFunctions(
-  attrs.onSelectedChanged,
-  attrs.scroll !== 'none' ? scroll.value : undefined,
+  props.onSelectedChanged,
+  props.scroll !== 'none' ? scroll : undefined,
 );
 
-const setupScroll = chainFunctions(attrs.onBeforeLayout, (elm, selected) =>
-  scroll.value(elm, selected),
-);
+const setupScroll = props.selected
+  ? chainFunctions(props.onBeforeLayout, (elm: ElementNode, selected) =>
+      scroll(elm, selected),
+    )
+  : props.onBeforeLayout;
 
 const style = {
   display: 'flex',
