@@ -1,12 +1,14 @@
 <template>
   <node
-    v-bind="props"
     :onUp="handleUp"
     :onDown="handleDown"
     :forwardFocus="onGridFocus"
     :onSelectedChanged="selectedChanged"
-    :onBeforeLayout="setupScroll"
+    :onLayout="setupScroll"
     :style="[style, props.style]"
+    :scroll="props.scroll"
+    :scrollIndex="props.scrollIndex"
+    :selected="props.selected"
   >
     <slot></slot>
   </node>
@@ -25,7 +27,7 @@ const props = defineProps<{
   scrollIndex?: number;
   selected?: number;
   scroll?: string;
-  onBeforeLayout?: (elm: ElementNode, selected: ElementNode) => void;
+  onLayout?: (elm: ElementNode, selected: ElementNode) => void;
   onUp?: KeyHandler;
   onDown?: KeyHandler;
   onSelectedChanged?: (
@@ -47,10 +49,10 @@ const selectedChanged = chainFunctions(
 );
 
 const setupScroll = props.selected
-  ? chainFunctions(props.onBeforeLayout, (elm: ElementNode, selected) =>
+  ? chainFunctions(props.onLayout, (elm: ElementNode, selected) =>
       scroll(elm, selected),
     )
-  : props.onBeforeLayout;
+  : props.onLayout;
 
 const style = {
   display: 'flex',

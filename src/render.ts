@@ -6,7 +6,7 @@ import {
   Config,
   ElementNode,
   startLightningRenderer,
-  RendererMain,
+  type RendererMain,
 } from '@lightningtv/core';
 const patchProp = nodeOps.setProperty;
 
